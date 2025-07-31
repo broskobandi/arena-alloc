@@ -10,5 +10,5 @@ void handle_thread_lock(arena_traits_t traits) {
 
 void handle_thread_unlock(arena_traits_t traits) {
 	if (traits & ARENA_TRAIT_THREADSAFE)
-		pthread_mutex_lock(&g_mutex);
+		pthread_mutex_unlock(&g_mutex);
 }
