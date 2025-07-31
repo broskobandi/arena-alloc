@@ -57,3 +57,4 @@ dkms.conf
 # Custom
 build
 compile_commands.json
+.cache
