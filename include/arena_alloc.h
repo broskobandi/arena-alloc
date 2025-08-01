@@ -8,9 +8,9 @@ typedef struct arena arena_t;
 typedef struct ptr ptr_t;
 
 typedef enum arena_traits {
-	ARENA_TRAIT_NONE,
-	ARENA_TRAIT_THREADSAFE,
-	ARENA_TRAIT_USE_HEAP
+	ARENA_TRAIT_NONE = 1 << 0,
+	ARENA_TRAIT_THREADSAFE = 1 << 1,
+	ARENA_TRAIT_USE_HEAP = 1 << 2
 } arena_traits_t;
 
 /* First parameter must not be NULL. If 'arena' is still NULL after
@@ -24,7 +24,7 @@ void arena_init(arena_t **arena, arena_traits_t traits);
  * 'size' must not be 0. */
 ptr_t *arena_alloc(arena_t *arena, size_t alignment, size_t size);
 
-/**/
+/*  */
 void arena_free(ptr_t **ptr);
 
 /**/

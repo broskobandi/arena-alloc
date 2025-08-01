@@ -18,7 +18,7 @@ void arena_init(arena_t **arena, arena_traits_t traits) {
 		new_arena_node(&g_arena_list);
 
 	allocate_arena(&g_arena_list, arena);
-	if (*arena) init_arena(arena);
+	if (*arena) init_arena(arena, traits);
 
 	handle_thread_unlock(traits);
 }
@@ -46,8 +46,9 @@ int new_arena_node(arena_list_t *list) {
 	return 0;
 }
 
-void init_arena(arena_t **arena) {
+void init_arena(arena_t **arena, arena_traits_t traits) {
 	(*arena)->tail = &(*arena)->head;
 	(*arena)->tail->next = NULL;
 	(*arena)->tail->offset = 0;
+	(*arena)->traits = traits;
 }

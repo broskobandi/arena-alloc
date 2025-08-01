@@ -52,7 +52,7 @@ $(LIB_A): $(OBJ) $(INC) | $(BUILD_DIR)
 $(LIB_SO): $(OBJ) $(INC) | $(BUILD_DIR)
 	$(CC) -shared $(CFLAGS) $(CPPFLAGS) $< -o $@
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(SRC_DIR)/*.h | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(SRC_DIR)/*.h $(INC) | $(OBJ_DIR)
 	$(CC) -c -fPIC $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 $(TEST_OBJ_DIR)/%.o: $(TEST_SRC_DIR)/%.c $(TEST_SRC_DIR)/*.h | $(OBJ_DIR) $(TEST_OBJ_DIR)

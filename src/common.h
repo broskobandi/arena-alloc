@@ -27,6 +27,7 @@ struct storage {
 struct arena {
 	storage_t head;
 	storage_t *tail;
+	arena_traits_t traits;
 };
 
 typedef struct arena_node arena_node_t;
@@ -41,6 +42,12 @@ typedef struct arena_list {
 	arena_node_t *tail;
 	size_t is_init;
 } arena_list_t;
+
+struct ptr {
+	storage_t *storage;
+	void *data;
+	size_t size;
+};
 
 extern arena_list_t g_arena_list;
 

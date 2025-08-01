@@ -52,6 +52,7 @@ static inline void test_arena_init() {
 			ASSERT(arenas[i]->tail);
 			ASSERT(!arenas[i]->tail->offset);
 			ASSERT(!arenas[i]->tail->next);
+			ASSERT(arenas[i]->traits & ARENA_TRAIT_USE_HEAP);
 		}
 		if (i >= MAX_NUM_ARENAS_PER_NODE) {
 			ASSERT(g_arena_list.tail->num_arenas == 1);
@@ -67,6 +68,7 @@ static inline void test_arena_init() {
 			ASSERT(arenas[i]->tail);
 			ASSERT(!arenas[i]->tail->offset);
 			ASSERT(!arenas[i]->tail->next);
+			ASSERT(arenas[i]->traits & ARENA_TRAIT_NONE);
 		}
 		if (i >= MAX_NUM_ARENAS_PER_NODE) {
 			ASSERT(g_arena_list.tail == old_node);
